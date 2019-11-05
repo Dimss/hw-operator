@@ -1,0 +1,19 @@
+apiVersion: hw.okto.io/v1alpha1
+kind: HelloWorld
+metadata:
+  name: example-helloworld
+spec:
+  message: |
+    <html>
+        <head>
+            <title>Welcome to Test!</title>
+        </head>
+        <body>
+            <img src="https://camo.githubusercontent.com/d57296b7b6382f168aff39cae28353b5e02cd923/687474703a2f2f6261636b7761726473616e64737475706964646f74636f6d2e66696c65732e776f726470726573732e636f6d2f323031322f30372f67726561742d737563636573732e706e67">
+            <br>
+            <div>
+            <br>
+              <h1>Hello World, Dima!</h1>
+            </div>
+        </body>
+    </html>

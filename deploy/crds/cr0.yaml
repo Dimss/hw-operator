@@ -1,0 +1,6 @@
+apiVersion: hw.okto.io/v1alpha1
+kind: HelloWorld
+metadata:
+  name: example-helloworld
+spec:
+  message: "Hello world"
