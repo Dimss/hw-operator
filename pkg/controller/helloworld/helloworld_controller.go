@@ -110,12 +110,20 @@ func (r *ReconcileHelloWorld) Reconcile(request reconcile.Request) (reconcile.Re
 	err = r.initFinalization(hw, reqLogger)
 	if err != nil {
 		reqLogger.Error(err, "Failed to initialize finalizer")
+		hw.Status.Message = fmt.Sprintf("%v", err)
+		if err := r.client.Status().Update(context.TODO(), hw); err != nil {
+			reqLogger.Error(err, "Failed to update CR status")
+		}
 		return reconcile.Result{}, err
 	}
 
 	// Check if configmap for websites list already exists, if not create a new one
 	reconcileResult, err := r.manageConfigMap(hw, reqLogger)
 	if err != nil {
+		hw.Status.Message = fmt.Sprintf("%v", err)
+		if err := r.client.Status().Update(context.TODO(), hw); err != nil {
+			reqLogger.Error(err, "Failed to update CR status")
+		}
 		return *reconcileResult, err
 	} else if err == nil && reconcileResult != nil {
 		// In case requeue required
@@ -125,6 +133,10 @@ func (r *ReconcileHelloWorld) Reconcile(request reconcile.Request) (reconcile.Re
 	//Check if service already exists, if not create a new one
 	reconcileResult, err = r.manageService(hw, reqLogger)
 	if err != nil {
+		hw.Status.Message = fmt.Sprintf("%v", err)
+		if err := r.client.Status().Update(context.TODO(), hw); err != nil {
+			reqLogger.Error(err, "Failed to update CR status")
+		}
 		return *reconcileResult, err
 	} else if err == nil && reconcileResult != nil {
 		// In case requeue required
@@ -133,6 +145,10 @@ func (r *ReconcileHelloWorld) Reconcile(request reconcile.Request) (reconcile.Re
 	//Check if route already exists, if not create a new one
 	reconcileResult, err = r.manageRoute(hw, reqLogger)
 	if err != nil {
+		hw.Status.Message = fmt.Sprintf("%v", err)
+		if err := r.client.Status().Update(context.TODO(), hw); err != nil {
+			reqLogger.Error(err, "Failed to update CR status")
+		}
 		return *reconcileResult, err
 	} else if err == nil && reconcileResult != nil {
 		// In case requeue required
@@ -141,12 +157,20 @@ func (r *ReconcileHelloWorld) Reconcile(request reconcile.Request) (reconcile.Re
 	//Check if deployment already exists, if not create a new one
 	reconcileResult, err = r.manageDeployment(hw, reqLogger)
 	if err != nil {
+		hw.Status.Message = fmt.Sprintf("%v", err)
+		if err := r.client.Status().Update(context.TODO(), hw); err != nil {
+			reqLogger.Error(err, "Failed to update CR status")
+		}
 		return *reconcileResult, err
 	} else if err == nil && reconcileResult != nil {
 		// In case requeue required
 		return *reconcileResult, nil
 	}
 
+	hw.Status.Message = "All good"
+	if err := r.client.Status().Update(context.TODO(), hw); err != nil {
+		reqLogger.Error(err, "Failed to update CR status")
+	}
 	return reconcile.Result{}, nil
 }
 
