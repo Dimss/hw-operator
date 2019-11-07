@@ -1,0 +1,5 @@
+#!/bin/ash
+set -x
+pwd
+ls -all
+hw-operator
