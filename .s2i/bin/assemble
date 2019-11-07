@@ -4,6 +4,6 @@ mv /tmp/src /go/src/hw-operator
 cd /go/src/hw-operator
 export GO111MODULE=on
 echo "Building sources..."
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -x -o /go/bin/hw-operator -mod vendor cmd/main.go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -x -o /go/bin/hw-operator -mod vendor cmd/manager/main.go
 rm -fr /go/src/hw-operator
 ls -all /go/bin
