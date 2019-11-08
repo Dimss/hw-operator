@@ -4,12 +4,12 @@ metadata:
   annotations:
     description: Template for building Dyncamic Admission WebHook
     tags: infrastructure
-  name: darp-build
+  name: ${NAME}-build
 objects:
 - kind: "BuildConfig"
   apiVersion: "build.openshift.io/v1"
   metadata:
-    name: darp
+    name: ${NAME}
     namespace: ${NAMESPACE}
   spec:
     runPolicy: "Serial"
@@ -24,17 +24,21 @@ objects:
     output:
       to:
         kind: "DockerImage"
-        name: "docker.io/dimssss/darp:${VERSION}"
+        name: "docker.io/dimssss/${NAME}:${VERSION}"
       pushSecret:
         name: docker-hub-dimssss
 parameters:
+- description: Specify name
+  name: NAME
+  value: "hw-operator"
+  required: true
 - description: Specify current namespace
   name: NAMESPACE
-  value: "darp"
+  value: "hwop"
   required: true
 - description: Specify service GIT url
   name: GIT_URL
-  value: "https://github.com/Dimss/darp.git"
+  value: "https://github.com/Dimss/hw-operator"
   required: true
 - description: Specify version
   name: VERSION
