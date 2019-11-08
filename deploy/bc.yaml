@@ -4,7 +4,7 @@ metadata:
   annotations:
     description: Template for building Dyncamic Admission WebHook
     tags: infrastructure
-  name: ${NAME}-build
+  name: hw-operator-build
 objects:
 - kind: "BuildConfig"
   apiVersion: "build.openshift.io/v1"

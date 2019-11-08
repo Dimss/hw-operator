@@ -15,8 +15,7 @@ spec:
       serviceAccountName: hw-operator
       containers:
         - name: hw-operator
-          # Replace this with the built image name
-          image: REPLACE_IMAGE
+          image: docker.io/dimssss/hw-operator:0.1
           command:
           - hw-operator
           imagePullPolicy: Always

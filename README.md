@@ -10,10 +10,10 @@
   ``` 
   
 ### Reconciliation loop basic overview
-* apply CR `oc apply -f deploy/crds/cr0.yaml`
-* apply CR `oc apply -f deploy/crds/cr1.yaml`
-* apply CR `oc apply -f deploy/crds/cr3.yaml`
-* apply CR `oc apply -f deploy/crds/cr4.yaml`
+* `oc apply -f deploy/crds/cr0.yaml`
+* `oc apply -f deploy/crds/cr1.yaml`
+* `oc apply -f deploy/crds/cr2.yaml`
+* `oc apply -f deploy/crds/cr3.yaml`
 
 ### Watches 
 * edit service when watching service changes 
@@ -32,3 +32,13 @@
 * with standard go tools `go build -o hw-operator cmd/manager/main.go`
 * with local S2I `s2i build . docker.io/dimssss/golang-s2i:0.5 test`
 * with OpenShift SourceStrategy build 
+    ```bash
+    # Create BC
+    oc process -f deploy/bc.yaml | oc create -f -
+    oc start-build hw-operator -F 
+    ```
+### Deploy Operator
+* `oc create -f deploy/service_account.yaml` 
+* `oc create -f deploy/role.yaml` 
+* `oc create -f deploy/role_binding.yaml` 
+* `oc create -f deploy/operator.yaml` 
