@@ -3,4 +3,4 @@ kind: HelloWorld
 metadata:
   name: example-helloworld
 spec:
-  message: "Hello world"
+  message: "Hello world, Dima!!!!"
