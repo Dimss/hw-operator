@@ -48,9 +48,9 @@
  
 #### Export variables
 ```bash
-export OPERATOR_NAME=optest
-export GROUP_NAME=mygroup1
-export OPERATOR_KIND=MyTestOp
+export OPERATOR_NAME=SET_YOUR_OPERATOR_NAME
+export GROUP_NAME=SET_YOUR_OPERATOR_GROUP
+export OPERATOR_KIND=SET_YOUR_OPERATOR_KIND
 
 ```
 #### Create Operator SDK project and implement required operational logic
