@@ -60,6 +60,7 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 		IsController: true,
 		OwnerType:    &hwv1alpha1.HelloWorld{},
 	})
+
 	if err != nil {
 		return err
 	}
@@ -68,6 +69,7 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 		IsController: true,
 		OwnerType:    &hwv1alpha1.HelloWorld{},
 	})
+
 	if err != nil {
 		return err
 	}
@@ -76,6 +78,7 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 		IsController: true,
 		OwnerType:    &hwv1alpha1.HelloWorld{},
 	})
+
 	if err != nil {
 		return err
 	}
@@ -485,7 +488,7 @@ func (r *ReconcileHelloWorld) finalizeHw(hw *hwv1alpha1.HelloWorld, reqLogger lo
 		Footer:  "HelloWorld Operator Finalizer",
 		Title:   fmt.Sprintf("WebSite %s gonna be removed from OpenShift Cluster", hw.Name),
 	}
-	channelID, timestamp, err := api.PostMessage("CQ5EXBM8C", slack.MsgOptionAttachments(attachment))
+	channelID, timestamp, err := api.PostMessage("CTKMWH2P9", slack.MsgOptionAttachments(attachment))
 	if err != nil {
 		reqLogger.Error(err, "Failed to send Slack message")
 	}
