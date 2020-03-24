@@ -10,6 +10,10 @@ COPY build/_output/bin/hw-operator ${OPERATOR}
 COPY build/bin /usr/local/bin
 RUN  /usr/local/bin/user_setup
 
+RUN mvn package
+
+RUN npm build
+
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
 
 USER ${USER_UID}

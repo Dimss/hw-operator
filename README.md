@@ -4,7 +4,6 @@
 * operator-sdk cli `operator-sdk up local`
 * standard go tooling `go run cmd/manager/main.go` 
   ```bash
-      export KUBERNETES_CONFIG=/Users/dima/.kube/config 
       export WATCH_NAMESPACE=hwop 
       export OPERATOR_NAME=hw 
   ``` 
